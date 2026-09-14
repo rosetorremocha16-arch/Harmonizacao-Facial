@@ -31,8 +31,6 @@
       padding: 30px 0 50px;
     }
 
-    /* CABEÇALHO */
-
     .hero {
       text-align: center;
       padding: 35px 20px;
@@ -65,8 +63,6 @@
       margin-top: 15px;
       color: #8a7185;
     }
-
-    /* PROCEDIMENTOS */
 
     .titulo {
       text-align: center;
@@ -101,21 +97,8 @@
       overflow: hidden;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      background: #ffe0ef;
-      border-radius: 50%;
-      right: -30px;
-      top: -30px;
-      opacity: 0.7;
-    }
-
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(130, 80, 120, 0.18);
     }
 
     .card.selected {
@@ -132,14 +115,12 @@
     .card h3 {
       font-size: 17px;
       color: #583b52;
-      position: relative;
     }
 
     .card p {
       font-size: 13px;
       color: #907c8c;
       margin-top: 7px;
-      position: relative;
     }
 
     .check {
@@ -160,8 +141,6 @@
     .card.selected .check {
       display: block;
     }
-
-    /* ÁREA DE SELEÇÃO */
 
     .selecionado {
       display: none;
@@ -199,14 +178,7 @@
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 8px 20px rgba(170, 70, 130, 0.25);
-      transition: 0.2s;
     }
-
-    .botao:hover {
-      transform: translateY(-2px);
-    }
-
-    /* TELA FINAL */
 
     #telaFinal {
       display: none;
@@ -229,7 +201,7 @@
       box-shadow: 0 15px 45px rgba(150, 80, 130, 0.18);
     }
 
-    .final .icone-final {
+    .icone-final {
       font-size: 55px;
       margin-bottom: 15px;
     }
@@ -282,7 +254,6 @@
       background: #25D366;
       color: white;
       font-weight: bold;
-      box-shadow: 0 8px 20px rgba(37,211,102,0.2);
     }
 
     .voltar {
@@ -312,16 +283,8 @@
         font-size: 27px;
       }
 
-      .hero {
-        padding: 28px 15px;
-      }
-
       .grid {
         grid-template-columns: 1fr;
-      }
-
-      .card {
-        padding: 19px;
       }
     }
   </style>
@@ -329,271 +292,245 @@
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- TELA DE ESCOLHA -->
+  <div id="telaEscolha">
 
-    <div id="telaEscolha">
+    <section class="hero">
+      <div class="flor">🌸✨</div>
+      <h1>Seja Bem-vindo!</h1>
+      <h2>Harmonização Facial</h2>
+      <p>Escolha o procedimento desejado</p>
+    </section>
 
-      <section class="hero">
-        <div class="flor">🌸✨</div>
+    <div class="titulo">
+      <h2>💗 Escolha seu procedimento</h2>
+      <p>Toque em uma das opções abaixo</p>
+    </div>
 
-        <h1>Seja Bem-vindo!</h1>
+    <div class="grid">
 
-        <h2>Harmonização Facial</h2>
-
-        <p>
-          Escolha abaixo o procedimento desejado
-        </p>
-      </section>
-
-      <div class="titulo">
-        <h2>💗 Escolha seu procedimento</h2>
-        <p>Toque em uma das opções abaixo</p>
+      <div class="card" onclick="selecionar(this,'Preenchimento labial')">
+        <div class="icone">💋</div>
+        <h3>Preenchimento labial</h3>
+        <p>Realce e definição dos lábios.</p>
+        <span class="check">✓</span>
       </div>
 
-      <div class="grid">
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento labial')">
-          <div class="icone">💋</div>
-          <h3>Preenchimento labial</h3>
-          <p>Realce e definição dos lábios.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento de queixo')">
-          <div class="icone">✨</div>
-          <h3>Preenchimento de queixo</h3>
-          <p>Harmonização da região do queixo.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento mandibular')">
-          <div class="icone">💎</div>
-          <h3>Preenchimento mandibular</h3>
-          <p>Definição do contorno mandibular.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento malar')">
-          <div class="icone">🌷</div>
-          <h3>Preenchimento malar</h3>
-          <p>Harmonização da região das maçãs do rosto.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento de têmporas')">
-          <div class="icone">✨</div>
-          <h3>Preenchimento de têmporas</h3>
-          <p>Procedimento para harmonização facial.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento nasal')">
-          <div class="icone">👃</div>
-          <h3>Preenchimento nasal</h3>
-          <p>Harmonização da região nasal.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento de olheiras')">
-          <div class="icone">👁️</div>
-          <h3>Preenchimento de olheiras</h3>
-          <p>Procedimento para a região abaixo dos olhos.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento de sulco nasolabial')">
-          <div class="icone">💗</div>
-          <h3>Preenchimento de sulco nasolabial</h3>
-          <p>Linhas entre o nariz e a boca.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento de marionete')">
-          <div class="icone">🎀</div>
-          <h3>Preenchimento de marionete</h3>
-          <p>Harmonização da região inferior do rosto.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento de arco do cupido')">
-          <div class="icone">💋</div>
-          <h3>Preenchimento de arco do cupido</h3>
-          <p>Realce do contorno dos lábios.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Preenchimento de contorno facial')">
-          <div class="icone">🌸</div>
-          <h3>Preenchimento de contorno facial</h3>
-          <p>Harmonização e definição do contorno.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Toxina botulínica (Botox)')">
-          <div class="icone">💉</div>
-          <h3>Toxina botulínica (Botox)</h3>
-          <p>Procedimento estético com toxina botulínica.</p>
-          <span class="check">✓</span>
-        </div>
-
-        <div class="card" onclick="selecionar(this, 'Lipo de papada')">
-          <div class="icone">✨</div>
-          <h3>Lipo de papada</h3>
-          <p>Procedimento voltado à região abaixo do queixo.</p>
-          <span class="check">✓</span>
-        </div>
-
+      <div class="card" onclick="selecionar(this,'Preenchimento de queixo')">
+        <div class="icone">✨</div>
+        <h3>Preenchimento de queixo</h3>
+        <p>Harmonização da região do queixo.</p>
+        <span class="check">✓</span>
       </div>
 
-      <!-- SELEÇÃO -->
+      <div class="card" onclick="selecionar(this,'Preenchimento mandibular')">
+        <div class="icone">💎</div>
+        <h3>Preenchimento mandibular</h3>
+        <p>Definição do contorno mandibular.</p>
+        <span class="check">✓</span>
+      </div>
 
-      <div id="areaSelecionado" class="selecionado">
+      <div class="card" onclick="selecionar(this,'Preenchimento malar')">
+        <div class="icone">🌷</div>
+        <h3>Preenchimento malar</h3>
+        <p>Harmonização das maçãs do rosto.</p>
+        <span class="check">✓</span>
+      </div>
 
-        <h3>✨ Procedimento selecionado</h3>
+      <div class="card" onclick="selecionar(this,'Preenchimento de têmporas')">
+        <div class="icone">✨</div>
+        <h3>Preenchimento de têmporas</h3>
+        <p>Harmonização facial.</p>
+        <span class="check">✓</span>
+      </div>
 
-        <div id="nomeProcedimento">
-          Nenhum procedimento selecionado
-        </div>
+      <div class="card" onclick="selecionar(this,'Preenchimento nasal')">
+        <div class="icone">👃</div>
+        <h3>Preenchimento nasal</h3>
+        <p>Harmonização da região nasal.</p>
+        <span class="check">✓</span>
+      </div>
 
-        <button class="botao" onclick="continuar()">
-          Continuar ➜
-        </button>
+      <div class="card" onclick="selecionar(this,'Preenchimento de olheiras')">
+        <div class="icone">👁️</div>
+        <h3>Preenchimento de olheiras</h3>
+        <p>Procedimento para a região abaixo dos olhos.</p>
+        <span class="check">✓</span>
+      </div>
 
+      <div class="card" onclick="selecionar(this,'Preenchimento de sulco nasolabial — linhas entre nariz e boca')">
+        <div class="icone">💗</div>
+        <h3>Preenchimento de sulco nasolabial</h3>
+        <p>Linhas entre nariz e boca.</p>
+        <span class="check">✓</span>
+      </div>
+
+      <div class="card" onclick="selecionar(this,'Preenchimento de marionete')">
+        <div class="icone">🎀</div>
+        <h3>Preenchimento de marionete</h3>
+        <p>Harmonização da região inferior do rosto.</p>
+        <span class="check">✓</span>
+      </div>
+
+      <div class="card" onclick="selecionar(this,'Preenchimento de arco do cupido')">
+        <div class="icone">💋</div>
+        <h3>Preenchimento de arco do cupido</h3>
+        <p>Realce do contorno dos lábios.</p>
+        <span class="check">✓</span>
+      </div>
+
+      <div class="card" onclick="selecionar(this,'Preenchimento de contorno facial')">
+        <div class="icone">🌸</div>
+        <h3>Preenchimento de contorno facial</h3>
+        <p>Harmonização e definição do contorno.</p>
+        <span class="check">✓</span>
+      </div>
+
+      <div class="card" onclick="selecionar(this,'Toxina botulínica (Botox)')">
+        <div class="icone">💉</div>
+        <h3>Toxina botulínica (Botox)</h3>
+        <p>Procedimento estético com toxina botulínica.</p>
+        <span class="check">✓</span>
+      </div>
+
+      <div class="card" onclick="selecionar(this,'Lipo de papada')">
+        <div class="icone">✨</div>
+        <h3>Lipo de papada</h3>
+        <p>Procedimento para a região abaixo do queixo.</p>
+        <span class="check">✓</span>
       </div>
 
     </div>
 
-    <!-- TELA FINAL -->
-
-    <div id="telaFinal">
-
-      <div class="final">
-
-        <div class="icone-final">🌸✨</div>
-
-        <h1>Agendamento</h1>
-
-        <p>
-          Você selecionou:
-        </p>
-
-        <div class="procedimento-final" id="procedimentoFinal">
-        </div>
-
-        <div class="responsavel">
-
-          <h3>👩‍⚕️ Responsável</h3>
-
-          <div class="nome">
-            Dr. Davilla Fernanda
-          </div>
-
-          <div class="telefone">
-            📱 66 98126-6980
-          </div>
-
-        </div>
-
-        <a
-          class="whatsapp"
-          href="https://wa.me/5566981266980"
-          target="_blank"
-        >
-          💬 Conversar pelo WhatsApp
-        </a>
-
-        <br>
-
-        <button
-          class="botao voltar"
-          onclick="voltar()"
-        >
-          ← Escolher outro procedimento
-        </button>
-
-        <div class="aviso">
-          ℹ️ Este site é uma interface informativa para contato e
-          agendamento. A indicação, realização e segurança de qualquer
-          procedimento devem ser avaliadas por um profissional habilitado
-          após consulta.
-        </div>
-
-      </div>
-
+    <div id="areaSelecionado" class="selecionado">
+      <h3>✨ Procedimento selecionado</h3>
+      <div id="nomeProcedimento"></div>
+      <button class="botao" onclick="continuar()">Continuar ➜</button>
     </div>
-
-    <footer>
-      🌸 Harmonização Facial • Atendimento mediante avaliação profissional
-    </footer>
 
   </div>
 
-  <script>
+  <div id="telaFinal">
 
-    let procedimentoSelecionado = "";
+    <div class="final">
 
-    function selecionar(elemento, procedimento) {
+      <div class="icone-final">🌸✨</div>
 
-      document.querySelectorAll(".card").forEach(card => {
-        card.classList.remove("selected");
+      <h1>Agendamento</h1>
+
+      <p>Você selecionou:</p>
+
+      <div class="procedimento-final" id="procedimentoFinal"></div>
+
+      <div class="responsavel">
+
+        <h3>👩‍⚕️ Responsável</h3>
+
+        <div class="nome">
+          Dr. Davilla Fernanda
+        </div>
+
+        <div class="telefone">
+          📱 69 8126-6980
+        </div>
+
+      </div>
+
+      <a
+        class="whatsapp"
+        href="https://wa.me/556981266980"
+        target="_blank">
+        💬 Conversar pelo WhatsApp
+      </a>
+
+      <br>
+
+      <button class="botao voltar" onclick="voltar()">
+        ← Escolher outro procedimento
+      </button>
+
+      <div class="aviso">
+        ℹ️ Este site é uma interface informativa para contato e
+        agendamento. A indicação, realização e segurança de qualquer
+        procedimento devem ser avaliadas por um profissional habilitado
+        após consulta.
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    🌸 Harmonização Facial • Atendimento mediante avaliação profissional
+  </footer>
+
+</div>
+
+<script>
+
+  let procedimentoSelecionado = "";
+
+  function selecionar(elemento, procedimento) {
+
+    document.querySelectorAll(".card").forEach(card => {
+      card.classList.remove("selected");
+    });
+
+    elemento.classList.add("selected");
+
+    procedimentoSelecionado = procedimento;
+
+    document.getElementById("nomeProcedimento").textContent =
+      procedimento;
+
+    document.getElementById("areaSelecionado")
+      .classList.add("mostrar");
+
+    document.getElementById("areaSelecionado")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "center"
       });
+  }
 
-      elemento.classList.add("selected");
+  function continuar() {
 
-      procedimentoSelecionado = procedimento;
-
-      document.getElementById("nomeProcedimento").textContent =
-        procedimento;
-
-      document.getElementById("areaSelecionado")
-        .classList.add("mostrar");
-
-      document.getElementById("areaSelecionado")
-        .scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
+    if (procedimentoSelecionado === "") {
+      alert("Escolha um procedimento primeiro.");
+      return;
     }
 
-    function continuar() {
+    document.getElementById("procedimentoFinal")
+      .textContent = procedimentoSelecionado;
 
-      if (procedimentoSelecionado === "") {
-        alert("Escolha um procedimento primeiro.");
-        return;
-      }
+    document.getElementById("telaEscolha")
+      .classList.add("esconder");
 
-      document.getElementById("procedimentoFinal")
-        .textContent = procedimentoSelecionado;
+    document.getElementById("telaFinal")
+      .classList.add("mostrar");
 
-      document.getElementById("telaEscolha")
-        .classList.add("esconder");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
 
-      document.getElementById("telaFinal")
-        .classList.add("mostrar");
+  function voltar() {
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
+    document.getElementById("telaFinal")
+      .classList.remove("mostrar");
 
-    function voltar() {
+    document.getElementById("telaEscolha")
+      .classList.remove("esconder");
 
-      document.getElementById("telaFinal")
-        .classList.remove("mostrar");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
 
-      document.getElementById("telaEscolha")
-        .classList.remove("esconder");
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-
-  </script>
+</script>
 
 </body>
-            </html>
+</html>
