@@ -1,534 +1,536 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harmonização Facial</title>
 
-  <title>Harmonização Facial</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, #ffd6e8, transparent 35%),
+    radial-gradient(circle at bottom right, #e4d7ff, transparent 35%),
+    linear-gradient(135deg, #fff5fa, #f8f2ff);
+  color: #3d2940;
+}
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top left, #ffd6e8, transparent 35%),
-        radial-gradient(circle at bottom right, #e4d7ff, transparent 35%),
-        linear-gradient(135deg, #fff5fa, #f8f2ff);
-      color: #3d2940;
-      overflow-x: hidden;
-    }
+.container {
+  width: 92%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px 0 50px;
+}
 
-    .container {
-      width: 92%;
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 0 50px;
-    }
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  margin-bottom: 28px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 45px rgba(170,105,150,.18);
+}
 
-    .hero {
-      text-align: center;
-      padding: 35px 20px;
-      margin-bottom: 25px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 15px 45px rgba(170, 105, 150, 0.18);
-      border: 1px solid rgba(255,255,255,0.8);
-    }
+.flor {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
 
-    .flor {
-      font-size: 45px;
-      margin-bottom: 10px;
-    }
+.hero h1 {
+  font-size: 34px;
+  color: #a33f78;
+  margin-bottom: 8px;
+}
 
-    .hero h1 {
-      font-size: 34px;
-      color: #a33f78;
-      margin-bottom: 8px;
-    }
+.hero h2 {
+  font-size: 19px;
+  font-weight: normal;
+  color: #76556f;
+}
 
-    .hero h2 {
-      font-size: 18px;
-      font-weight: normal;
-      color: #76556f;
-    }
+.hero p {
+  margin-top: 15px;
+  color: #8a7185;
+}
 
-    .hero p {
-      margin-top: 15px;
-      color: #8a7185;
-    }
+.titulo {
+  text-align: center;
+  margin: 25px 0 20px;
+}
 
-    .titulo {
-      text-align: center;
-      margin: 25px 0 18px;
-    }
+.titulo h2 {
+  color: #a33f78;
+  font-size: 25px;
+}
 
-    .titulo h2 {
-      color: #a33f78;
-      font-size: 25px;
-    }
+.titulo p {
+  color: #806c7b;
+  margin-top: 7px;
+}
 
-    .titulo p {
-      color: #806c7b;
-      margin-top: 6px;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 15px;
-    }
+.card {
+  border: 2px solid transparent;
+  border-radius: 22px;
+  padding: 23px 18px;
+  background: rgba(255,255,255,.86);
+  box-shadow: 0 8px 25px rgba(130,80,120,.10);
+  cursor: pointer;
+  transition: .25s;
+  position: relative;
+  overflow: hidden;
+}
 
-    .card {
-      border: 2px solid transparent;
-      border-radius: 22px;
-      padding: 22px 18px;
-      background: rgba(255,255,255,0.82);
-      box-shadow: 0 8px 25px rgba(130, 80, 120, 0.10);
-      cursor: pointer;
-      transition: 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
+.card:hover {
+  transform: translateY(-4px);
+}
 
-    .card:hover {
-      transform: translateY(-4px);
-    }
+.card.selected {
+  border-color: #d45b99;
+  background: #fff0f7;
+  transform: scale(1.02);
+}
 
-    .card.selected {
-      border-color: #d45b99;
-      background: #fff0f7;
-      transform: scale(1.02);
-    }
+.icone {
+  font-size: 31px;
+  margin-bottom: 12px;
+}
 
-    .icone {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
+.card h3 {
+  font-size: 17px;
+  color: #583b52;
+}
 
-    .card h3 {
-      font-size: 17px;
-      color: #583b52;
-    }
+.card p {
+  font-size: 13px;
+  color: #907c8c;
+  margin-top: 7px;
+  line-height: 1.4;
+}
 
-    .card p {
-      font-size: 13px;
-      color: #907c8c;
-      margin-top: 7px;
-    }
+.check {
+  display: none;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  background: #d45b99;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  font-weight: bold;
+}
 
-    .check {
-      display: none;
-      position: absolute;
-      right: 15px;
-      bottom: 15px;
-      background: #d45b99;
-      color: white;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 28px;
-      font-weight: bold;
-    }
+.card.selected .check {
+  display: block;
+}
 
-    .card.selected .check {
-      display: block;
-    }
+.selecionado {
+  display: none;
+  margin-top: 25px;
+  padding: 26px;
+  text-align: center;
+  border-radius: 25px;
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 10px 35px rgba(150,80,120,.15);
+}
 
-    .selecionado {
-      display: none;
-      margin-top: 25px;
-      padding: 25px;
-      text-align: center;
-      border-radius: 25px;
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 10px 35px rgba(150, 80, 120, 0.15);
-    }
+.selecionado.mostrar {
+  display: block;
+}
 
-    .selecionado.mostrar {
-      display: block;
-    }
+.selecionado h3 {
+  color: #a33f78;
+  margin-bottom: 10px;
+}
 
-    .selecionado h3 {
-      color: #a33f78;
-      margin-bottom: 10px;
-    }
+#nomeProcedimento {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4e3549;
+  margin-bottom: 18px;
+}
 
-    #nomeProcedimento {
-      font-size: 20px;
-      font-weight: bold;
-      color: #4e3549;
-      margin-bottom: 18px;
-    }
+.botao {
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  background: linear-gradient(135deg,#d85d9c,#a34b91);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(170,70,130,.25);
+}
 
-    .botao {
-      border: none;
-      padding: 14px 28px;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #d85d9c, #a34b91);
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(170, 70, 130, 0.25);
-    }
+#telaFinal {
+  display: none;
+}
 
-    #telaFinal {
-      display: none;
-    }
+#telaFinal.mostrar {
+  display: block;
+}
 
-    #telaFinal.mostrar {
-      display: block;
-    }
+#telaEscolha.esconder {
+  display: none;
+}
 
-    #telaEscolha.esconder {
-      display: none;
-    }
+.final {
+  margin-top: 20px;
+  text-align: center;
+  padding: 40px 25px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.90);
+  box-shadow: 0 15px 45px rgba(150,80,130,.18);
+}
 
-    .final {
-      margin-top: 20px;
-      text-align: center;
-      padding: 40px 25px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.88);
-      box-shadow: 0 15px 45px rgba(150, 80, 130, 0.18);
-    }
+.icone-final {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
 
-    .icone-final {
-      font-size: 55px;
-      margin-bottom: 15px;
-    }
+.final h1 {
+  color: #a33f78;
+  margin-bottom: 10px;
+}
 
-    .final h1 {
-      color: #a33f78;
-      margin-bottom: 10px;
-    }
+.procedimento-final {
+  display: inline-block;
+  margin: 15px 0 25px;
+  padding: 12px 20px;
+  border-radius: 50px;
+  background: #ffe5f1;
+  color: #8e356b;
+  font-weight: bold;
+}
 
-    .procedimento-final {
-      display: inline-block;
-      margin: 15px 0 25px;
-      padding: 12px 20px;
-      border-radius: 50px;
-      background: #ffe5f1;
-      color: #8e356b;
-      font-weight: bold;
-    }
+.responsavel {
+  padding: 22px;
+  border-radius: 22px;
+  background: #faf3f8;
+  margin-bottom: 25px;
+}
 
-    .responsavel {
-      padding: 22px;
-      border-radius: 22px;
-      background: #faf3f8;
-      margin-bottom: 25px;
-    }
+.responsavel h3 {
+  color: #7b526f;
+  margin-bottom: 10px;
+}
 
-    .responsavel h3 {
-      color: #7b526f;
-      margin-bottom: 10px;
-    }
+.nome {
+  font-size: 21px;
+  font-weight: bold;
+  color: #4c3547;
+  margin-bottom: 8px;
+}
 
-    .nome {
-      font-size: 21px;
-      font-weight: bold;
-      color: #4c3547;
-      margin-bottom: 8px;
-    }
+.telefone {
+  color: #765d70;
+  font-size: 17px;
+}
 
-    .telefone {
-      color: #765d70;
-      font-size: 17px;
-    }
+.whatsapp {
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 25px;
+  border-radius: 50px;
+  background: #25D366;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(37,211,102,.20);
+}
 
-    .whatsapp {
-      display: inline-block;
-      text-decoration: none;
-      margin-top: 8px;
-      padding: 14px 25px;
-      border-radius: 50px;
-      background: #25D366;
-      color: white;
-      font-weight: bold;
-    }
+.voltar {
+  margin-top: 15px;
+  background: #8e7085;
+}
 
-    .voltar {
-      margin-top: 15px;
-      background: #8e7085;
-    }
+.aviso {
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #fff7fb;
+  color: #806c7b;
+  font-size: 12px;
+  line-height: 1.5;
+}
 
-    .aviso {
-      margin-top: 25px;
-      padding: 15px;
-      border-radius: 15px;
-      background: #fff7fb;
-      color: #806c7b;
-      font-size: 12px;
-      line-height: 1.5;
-    }
+footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #9b8495;
+  font-size: 12px;
+}
 
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      color: #9b8495;
-      font-size: 12px;
-    }
+@media (max-width:600px) {
+  .hero h1 {
+    font-size: 28px;
+  }
 
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 27px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <div id="telaEscolha">
+<!-- TELA DE ESCOLHA -->
 
-    <section class="hero">
-      <div class="flor">🌸✨</div>
-      <h1>Seja Bem-vindo!</h1>
-      <h2>Harmonização Facial</h2>
-      <p>Escolha o procedimento desejado</p>
-    </section>
+<div id="telaEscolha">
 
-    <div class="titulo">
-      <h2>💗 Escolha seu procedimento</h2>
-      <p>Toque em uma das opções abaixo</p>
+<section class="hero">
+  <div class="flor">🌸✨</div>
+  <h1>Seja Bem-vindo!</h1>
+  <h2>Harmonização Facial</h2>
+  <p>Escolha o procedimento desejado</p>
+</section>
+
+<div class="titulo">
+  <h2>💗 Escolha seu procedimento</h2>
+  <p>Toque em uma das opções abaixo</p>
+</div>
+
+<div class="grid">
+
+<div class="card" onclick="selecionar(this,'Preenchimento labial')">
+  <div class="icone">💋</div>
+  <h3>Preenchimento labial</h3>
+  <p>Realce e definição dos lábios.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento de queixo')">
+  <div class="icone">✨</div>
+  <h3>Preenchimento de queixo</h3>
+  <p>Harmonização da região do queixo.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento mandibular')">
+  <div class="icone">💎</div>
+  <h3>Preenchimento mandibular</h3>
+  <p>Definição do contorno mandibular.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento malar')">
+  <div class="icone">🌷</div>
+  <h3>Preenchimento malar</h3>
+  <p>Harmonização das maçãs do rosto.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento de têmporas')">
+  <div class="icone">✨</div>
+  <h3>Preenchimento de têmporas</h3>
+  <p>Harmonização facial.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento nasal')">
+  <div class="icone">👃</div>
+  <h3>Preenchimento nasal</h3>
+  <p>Harmonização da região nasal.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento de olheiras')">
+  <div class="icone">👁️</div>
+  <h3>Preenchimento de olheiras</h3>
+  <p>Procedimento para a região abaixo dos olhos.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento de sulco nasolabial — linhas entre nariz e boca')">
+  <div class="icone">💗</div>
+  <h3>Preenchimento de sulco nasolabial</h3>
+  <p>Linhas entre nariz e boca.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento de marionete')">
+  <div class="icone">🎀</div>
+  <h3>Preenchimento de marionete</h3>
+  <p>Harmonização da região inferior do rosto.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento de arco do cupido')">
+  <div class="icone">💋</div>
+  <h3>Preenchimento de arco do cupido</h3>
+  <p>Realce do contorno dos lábios.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Preenchimento de contorno facial')">
+  <div class="icone">🌸</div>
+  <h3>Preenchimento de contorno facial</h3>
+  <p>Harmonização e definição do contorno.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Toxina botulínica (Botox)')">
+  <div class="icone">💉</div>
+  <h3>Toxina botulínica (Botox)</h3>
+  <p>Procedimento estético com toxina botulínica.</p>
+  <span class="check">✓</span>
+</div>
+
+<div class="card" onclick="selecionar(this,'Lipo de papada')">
+  <div class="icone">✨</div>
+  <h3>Lipo de papada</h3>
+  <p>Procedimento para a região abaixo do queixo.</p>
+  <span class="check">✓</span>
+</div>
+
+</div>
+
+<div id="areaSelecionado" class="selecionado">
+  <h3>✨ Procedimento selecionado</h3>
+  <div id="nomeProcedimento"></div>
+  <button class="botao" onclick="continuar()">Continuar ➜</button>
+</div>
+
+</div>
+
+<!-- TELA FINAL -->
+
+<div id="telaFinal">
+
+<div class="final">
+
+  <div class="icone-final">🌸✨</div>
+
+  <h1>Agendamento</h1>
+
+  <p>Você selecionou:</p>
+
+  <div class="procedimento-final" id="procedimentoFinal"></div>
+
+  <div class="responsavel">
+
+    <h3>👩‍⚕️ Responsável</h3>
+
+    <div class="nome">
+      Dr. Davilla Fernanda
     </div>
 
-    <div class="grid">
-
-      <div class="card" onclick="selecionar(this,'Preenchimento labial')">
-        <div class="icone">💋</div>
-        <h3>Preenchimento labial</h3>
-        <p>Realce e definição dos lábios.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento de queixo')">
-        <div class="icone">✨</div>
-        <h3>Preenchimento de queixo</h3>
-        <p>Harmonização da região do queixo.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento mandibular')">
-        <div class="icone">💎</div>
-        <h3>Preenchimento mandibular</h3>
-        <p>Definição do contorno mandibular.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento malar')">
-        <div class="icone">🌷</div>
-        <h3>Preenchimento malar</h3>
-        <p>Harmonização das maçãs do rosto.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento de têmporas')">
-        <div class="icone">✨</div>
-        <h3>Preenchimento de têmporas</h3>
-        <p>Harmonização facial.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento nasal')">
-        <div class="icone">👃</div>
-        <h3>Preenchimento nasal</h3>
-        <p>Harmonização da região nasal.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento de olheiras')">
-        <div class="icone">👁️</div>
-        <h3>Preenchimento de olheiras</h3>
-        <p>Procedimento para a região abaixo dos olhos.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento de sulco nasolabial — linhas entre nariz e boca')">
-        <div class="icone">💗</div>
-        <h3>Preenchimento de sulco nasolabial</h3>
-        <p>Linhas entre nariz e boca.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento de marionete')">
-        <div class="icone">🎀</div>
-        <h3>Preenchimento de marionete</h3>
-        <p>Harmonização da região inferior do rosto.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento de arco do cupido')">
-        <div class="icone">💋</div>
-        <h3>Preenchimento de arco do cupido</h3>
-        <p>Realce do contorno dos lábios.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Preenchimento de contorno facial')">
-        <div class="icone">🌸</div>
-        <h3>Preenchimento de contorno facial</h3>
-        <p>Harmonização e definição do contorno.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Toxina botulínica (Botox)')">
-        <div class="icone">💉</div>
-        <h3>Toxina botulínica (Botox)</h3>
-        <p>Procedimento estético com toxina botulínica.</p>
-        <span class="check">✓</span>
-      </div>
-
-      <div class="card" onclick="selecionar(this,'Lipo de papada')">
-        <div class="icone">✨</div>
-        <h3>Lipo de papada</h3>
-        <p>Procedimento para a região abaixo do queixo.</p>
-        <span class="check">✓</span>
-      </div>
-
-    </div>
-
-    <div id="areaSelecionado" class="selecionado">
-      <h3>✨ Procedimento selecionado</h3>
-      <div id="nomeProcedimento"></div>
-      <button class="botao" onclick="continuar()">Continuar ➜</button>
-    </div>
-
-  </div>
-
-  <div id="telaFinal">
-
-    <div class="final">
-
-      <div class="icone-final">🌸✨</div>
-
-      <h1>Agendamento</h1>
-
-      <p>Você selecionou:</p>
-
-      <div class="procedimento-final" id="procedimentoFinal"></div>
-
-      <div class="responsavel">
-
-        <h3>👩‍⚕️ Responsável</h3>
-
-        <div class="nome">
-          Dr. Davilla Fernanda
-        </div>
-
-        <div class="telefone">
-          📱 69 8126-6980
-        </div>
-
-      </div>
-
-      <a
-        class="whatsapp"
-        href="https://wa.me/556981266980"
-        target="_blank">
-        💬 Conversar pelo WhatsApp
-      </a>
-
-      <br>
-
-      <button class="botao voltar" onclick="voltar()">
-        ← Escolher outro procedimento
-      </button>
-
-      <div class="aviso">
-        ℹ️ Este site é uma interface informativa para contato e
-        agendamento. A indicação, realização e segurança de qualquer
-        procedimento devem ser avaliadas por um profissional habilitado
-        após consulta.
-      </div>
-
+    <div class="telefone">
+      📱 +55 698126-6980
     </div>
 
   </div>
 
-  <footer>
-    🌸 Harmonização Facial • Atendimento mediante avaliação profissional
-  </footer>
+  <a
+    class="whatsapp"
+    href="https://wa.me/556981266980"
+    target="_blank">
+    💬 Conversar pelo WhatsApp
+  </a>
+
+  <br>
+
+  <button class="botao voltar" onclick="voltar()">
+    ← Escolher outro procedimento
+  </button>
+
+  <div class="aviso">
+    ℹ️ Este site é uma interface informativa para contato e
+    agendamento. A indicação, realização e segurança de qualquer
+    procedimento devem ser avaliadas por um profissional habilitado
+    após consulta.
+  </div>
+
+</div>
+
+</div>
+
+<footer>
+  🌸 Harmonização Facial • Atendimento mediante avaliação profissional
+</footer>
 
 </div>
 
 <script>
 
-  let procedimentoSelecionado = "";
+let procedimentoSelecionado = "";
 
-  function selecionar(elemento, procedimento) {
+function selecionar(elemento, procedimento) {
 
-    document.querySelectorAll(".card").forEach(card => {
-      card.classList.remove("selected");
+  document.querySelectorAll(".card").forEach(card => {
+    card.classList.remove("selected");
+  });
+
+  elemento.classList.add("selected");
+
+  procedimentoSelecionado = procedimento;
+
+  document.getElementById("nomeProcedimento").textContent =
+    procedimento;
+
+  document.getElementById("areaSelecionado")
+    .classList.add("mostrar");
+
+  document.getElementById("areaSelecionado")
+    .scrollIntoView({
+      behavior: "smooth",
+      block: "center"
     });
+}
 
-    elemento.classList.add("selected");
+function continuar() {
 
-    procedimentoSelecionado = procedimento;
-
-    document.getElementById("nomeProcedimento").textContent =
-      procedimento;
-
-    document.getElementById("areaSelecionado")
-      .classList.add("mostrar");
-
-    document.getElementById("areaSelecionado")
-      .scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
+  if (procedimentoSelecionado === "") {
+    alert("Escolha um procedimento primeiro.");
+    return;
   }
 
-  function continuar() {
+  document.getElementById("procedimentoFinal")
+    .textContent = procedimentoSelecionado;
 
-    if (procedimentoSelecionado === "") {
-      alert("Escolha um procedimento primeiro.");
-      return;
-    }
+  document.getElementById("telaEscolha")
+    .classList.add("esconder");
 
-    document.getElementById("procedimentoFinal")
-      .textContent = procedimentoSelecionado;
+  document.getElementById("telaFinal")
+    .classList.add("mostrar");
 
-    document.getElementById("telaEscolha")
-      .classList.add("esconder");
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 
-    document.getElementById("telaFinal")
-      .classList.add("mostrar");
+function voltar() {
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
+  document.getElementById("telaFinal")
+    .classList.remove("mostrar");
 
-  function voltar() {
+  document.getElementById("telaEscolha")
+    .classList.remove("esconder");
 
-    document.getElementById("telaFinal")
-      .classList.remove("mostrar");
-
-    document.getElementById("telaEscolha")
-      .classList.remove("esconder");
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 
 </script>
 
